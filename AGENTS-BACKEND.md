@@ -1,6 +1,6 @@
 # AGENTS-BACKEND.md
 
-Backend guidance for Bulmacanya. Read root `AGENTS.md` first; see README §3.4, §4, §7 for spec details.
+Backend guidance for Bulmacanya. Read root [AGENTS.md](AGENTS.md) first. Business rules live in module SPECs (`docs/<MODUL>-SPEC.md`) and README §3.4/§4/§7 — this file only covers how backend code is structured.
 
 ## Stack and structure
 
@@ -13,11 +13,13 @@ Backend guidance for Bulmacanya. Read root `AGENTS.md` first; see README §3.4, 
 - `presentation/` is transport-agnostic: REST, CLI, and desktop clients attach to the same domain/application and can connect **simultaneously**.
 - All third-party dependencies (DB, etc.) are consumed **only through contracts/interfaces** defined by domain/application; concrete adapters live in `infra/`. Packages expose facades — no third-party classes leak into domain/application code.
 
-## Business rules to enforce (spec in README)
+## Contract rules
 
-- Hint quotas (§7.3): 2 free/day, 15 subscriber/day, +8 via rewarded ads (8 ads/day cap), reset at midnight local; coin-purchased hints accumulate.
-- Coin economy (§7.3.2, §7.4): 1 coin = 1 standard hint; per-game costs 1–3 coins. Subscribers get +5 coins/month, no purchase discount.
-- Subscription (§7.2): 25 TL/month, 250 TL/year, 7-day free trial (valid payment method required); trial→paid conversion tracked (target ≥20%).
-- Sync (§7.2.4): cross-device progress sync only for subscribers.
-- Progression (§4.4-4.5): skill points = base × coefficient × success × difficulty; daily skill caps; replaying a solved level yields 20%.
-- Data model: tables in README §3.4 (`users`, `skills`, `profile`, `progress`, `sessions`, `achievements`, `hints`, `coins`, `subscriptions`, `daily_puzzle`).
+- Method-bearing contract interfaces carry an **`I` prefix** (`IDatabasePort`); data shapes, classes, enums do not.
+- `domain/` and `application/` take constructor dependencies **only through I-contracts** — a concrete class or third-party type as constructor param fails `bun run check:contracts` (root `scripts/check-contracts.ts`, wired into `bun run check`).
+- Single-app types stay in this app: `IDatabasePort` lives in `apps/backend/src/domain/ports/`, NOT in `packages/shared` (shared = multi-app types only).
+
+## Business rules
+
+- Business rules are **not defined here** — they live in the module's SPEC (`docs/<MODUL>-SPEC.md`: FR-x, AK, K-x decisions) and in README §7 (monetization), §4 (progression). Read the relevant SPEC before implementing.
+- Data model tables are listed in README §3.4 (`users`, `skills`, `profile`, `progress`, `sessions`, `achievements`, `hints`, `coins`, `subscriptions`, `daily_puzzle`).

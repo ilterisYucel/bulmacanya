@@ -1,0 +1,42 @@
+{
+  "name": "@bulmacanya/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'shared: purity by construction — no third-party imports allowed (checked by backend purity lint)'",
+    "test": "echo 'shared: types only — compile-time contract, covered by typecheck'"
+  },
+  "nx": {
+    "targets": {
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "tsc --noEmit",
+          "cwd": "packages/shared"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo ok",
+          "cwd": "packages/shared"
+        }
+      },
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo ok",
+          "cwd": "packages/shared"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  }
+}

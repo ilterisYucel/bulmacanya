@@ -1,12 +1,18 @@
 # AGENTS-APP.md
 
-Client app guidance for Bulmacanya. Read root `AGENTS.md` first; see README §3 for spec details.
+Client app guidance for Bulmacanya. Read root [AGENTS.md](AGENTS.md) first. Product rules are distilled here; check README §3 only when full spec detail is needed.
 
 ## Stack and structure
 
 - Ionic/React + Capacitor: one codebase ships web (PWA) and iOS/Android.
 - Lives under `apps/` (Nx workspace); shared types/contracts in `packages/shared`.
-- UI strings and user-facing copy are **Turkish**.
+
+## Frontend architecture
+
+- **FSD (Feature-Sliced Design)**: organize code in slices — `app/`, `pages/`, `widgets/`, `features/`, `entities/`, `shared/`; imports flow inward only (upper layers depend on lower, never vice versa).
+- **FSD lint = Steiger** (official linter): dev deps `steiger` + `@feature-sliced/steiger-plugin`, root `steiger.config.ts` with `fsd.configs.recommended`; runs as part of the lint stage (`npx steiger ./src`).
+- **FSD agent skill**: `.opencode/skills/feature-sliced-design` — load it when structuring new slices/deciding code placement.
+- **Atomic Design**: compose UI bottom-up — atoms → molecules → organisms → templates → pages.
 
 ## Game shell
 

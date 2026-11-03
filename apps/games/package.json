@@ -1,0 +1,36 @@
+{
+  "name": "@bulmacanya/games",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Oyun modülleri Faz 1'de bu pakete gelir (K1: apps içinde oyunlar). Faz 0'da yer ayrılır.",
+  "scripts": {
+    "test": "echo 'games: Faz 1'",
+    "lint": "echo 'games: Faz 1'",
+    "typecheck": "echo 'games: Faz 1'"
+  },
+  "nx": {
+    "targets": {
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo 'games: Faz 1'",
+          "cwd": "apps/games"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo 'games: Faz 1'",
+          "cwd": "apps/games"
+        }
+      },
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo 'games: Faz 1'",
+          "cwd": "apps/games"
+        }
+      }
+    }
+  }
+}

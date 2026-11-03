@@ -1,10 +1,10 @@
 # AGENTS-GAMES.md
 
-Game module guidance for Bulmacanya. Read root `AGENTS.md` first; see README §2, §3.3, §4, §7.3.2 for spec details.
+Game module guidance for Bulmacanya. Read root [AGENTS.md](AGENTS.md) first. Product rules are distilled here; check README §2, §3.3, §4, §7.3.2 only when full spec detail is needed.
 
 ## Engine
 
-- `@pixi/react` is the main engine; use Phaser only if necessary (README §3.1).
+- `@pixi/react` is the main engine.
 
 ## Portfolio and status (README §2)
 

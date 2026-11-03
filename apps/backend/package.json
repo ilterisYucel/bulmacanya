@@ -1,0 +1,48 @@
+{
+  "name": "@bulmacanya/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/main.ts",
+    "start": "bun run src/main.ts",
+    "cli": "bun run src/cli.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "lint": "bun run scripts/check-purity.ts"
+  },
+  "nx": {
+    "targets": {
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "bun test",
+          "cwd": "apps/backend"
+        }
+      },
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "tsc --noEmit",
+          "cwd": "apps/backend"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "bun run scripts/check-purity.ts",
+          "cwd": "apps/backend"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@bulmacanya/shared": "workspace:*",
+    "drizzle-orm": "^0.44.0",
+    "fastify": "^5.6.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.8.0"
+  }
+}
