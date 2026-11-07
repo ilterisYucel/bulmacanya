@@ -1,36 +1,57 @@
 {
   "name": "@bulmacanya/games",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Oyun modülleri Faz 1'de bu pakete gelir (K1: apps içinde oyunlar). Faz 0'da yer ayrılır.",
+  "type": "module",
+  "description": "Bulmacanya oyun modülleri — FAZ-1: Shapetris. Shell kontratı IGameModule (packages/shared).",
+  "exports": {
+    "./shapetris": "./src/shapetris/index.ts",
+    "./game7": "./src/game7/index.ts",
+    "./game7/progression": "./src/game7/model/progression.ts"
+  },
   "scripts": {
-    "test": "echo 'games: Faz 1'",
-    "lint": "echo 'games: Faz 1'",
-    "typecheck": "echo 'games: Faz 1'"
+    "test": "bun test",
+    "lint": "bun run scripts/check-purity.ts",
+    "typecheck": "tsc --noEmit"
   },
   "nx": {
     "targets": {
       "test": {
         "executor": "nx:run-commands",
         "options": {
-          "command": "echo 'games: Faz 1'",
+          "command": "bun test",
           "cwd": "apps/games"
         }
       },
       "lint": {
         "executor": "nx:run-commands",
         "options": {
-          "command": "echo 'games: Faz 1'",
+          "command": "bun run scripts/check-purity.ts",
           "cwd": "apps/games"
         }
       },
       "typecheck": {
         "executor": "nx:run-commands",
         "options": {
-          "command": "echo 'games: Faz 1'",
+          "command": "tsc --noEmit",
           "cwd": "apps/games"
         }
       }
     }
+  },
+  "dependencies": {
+    "@bulmacanya/game-fx": "workspace:*",
+    "@bulmacanya/game-fx-pixi": "workspace:*",
+    "@bulmacanya/shared": "workspace:*",
+    "@pixi/react": "^8",
+    "pixi.js": "^8.22.0",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.8.0"
   }
 }

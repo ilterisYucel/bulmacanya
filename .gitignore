@@ -5,3 +5,6 @@ android/
 ios/
 *.log
 .DS_Store
+
+.claude/worktrees
+.claude/settings.local.json

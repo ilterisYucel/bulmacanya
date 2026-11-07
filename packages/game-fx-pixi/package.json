@@ -1,0 +1,50 @@
+{
+  "name": "@bulmacanya/game-fx-pixi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "game-fx için pixi v8 adapter + programatik efekt atlası (FAZ-GAME-FX-SPEC UC-5).",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "pixi.js": "^8.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'game-fx-pixi: adapter katmanı — purity uygulanmaz (pixi importu amacıdır)'",
+    "test": "echo 'game-fx-pixi: görsel katman — unit test yok (AK-5.1/5.3 gözle/kod inceleme)'"
+  },
+  "nx": {
+    "targets": {
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "tsc --noEmit",
+          "cwd": "packages/game-fx-pixi"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo ok",
+          "cwd": "packages/game-fx-pixi"
+        }
+      },
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "echo ok",
+          "cwd": "packages/game-fx-pixi"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@bulmacanya/game-fx": "workspace:*"
+  },
+  "devDependencies": {
+    "pixi.js": "^8.22.0",
+    "typescript": "^5.8.0"
+  }
+}

@@ -2,7 +2,7 @@
 status: active
 space: architecture
 tags: [hazirlik, mimari, spec]
-review_date: 2026-11-03
+review_date: 2026-11-04
 ---
 
 # FAZ-0 — SPEC (Hazırlık)
@@ -190,7 +190,7 @@ FSD slice'ları (`app/pages/widgets/features/entities/shared`) + Atomic Design b
 
 **Kabul Senaryoları (GWT):**
 1. **AK-3.1 — GIVEN** web build çalıştırılır **WHEN** çıktı incelenir **THEN** manifest ve service worker mevcut
-2. **AK-3.2 — GIVEN** Capacitor config **WHEN** `cap sync` çalıştırılır **THEN** android/ios platform klasörleri üretilir
+2. **AK-3.2 — GIVEN** android platformu eklenir **WHEN** `cap sync` çalıştırılır **THEN** android platform klasörü senkronize kalır (platform `cap add` ile üretilir; `cap sync` tek başına üretmez)
 3. **AK-3.3 — GIVEN** entities slice'ından app slice'ına import **WHEN** steiger çalıştırılır **THEN** kırmızı verir
 4. **AK-3.4 — GIVEN** ekran metinleri **WHEN** incelenir **THEN** Türkçedir
 
@@ -392,6 +392,7 @@ FSD slice'ları (`app/pages/widgets/features/entities/shared`) + Atomic Design b
 | 12 | `apps/*/test/**` | KIRMIZI→YEŞİL testler | §6 AK'lar |
 | 13 | `packages/shared/src/contracts/database.ts` → `apps/backend/src/domain/ports/database.ts` | DB port taşındı (tek-app tipi — shared yalnız çok-app) | 2026-11-03 kararı |
 | 14 | `IGameModule`/`IDatabasePort` prefix + `scripts/check-contracts.ts` (+ self-test) | Kontrat prefix + DIP denetimi | K10, §5.7 |
+| 15 | `apps/app/test/build.test.ts` (AK-3.2) | Test artık `cap add android` önkoşulunu kendi kurar (android/ gitignore'lu olduğundan taze checkout'ta gate kırılıyordu); `cap sync` tek başına platform üretmez | AK-3.2 GWT düzeltmesi (2026-11-04) |
 
 ### A.2 Test Kanıtları
 

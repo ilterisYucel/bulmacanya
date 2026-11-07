@@ -1,0 +1,48 @@
+{
+  "name": "@bulmacanya/game-fx",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bulmacanya ortak oyun efekt çekirdeği — zero-dep (FAZ-GAME-FX-SPEC). Renderer-bağımsız parçacık/geometri/ses/shake.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./particles": "./src/particles/index.ts",
+    "./fx-geometry": "./src/fx/geometry.ts",
+    "./audio": "./src/audio/index.ts",
+    "./shake": "./src/shake.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "bun run scripts/check-purity.ts",
+    "test": "bun test"
+  },
+  "nx": {
+    "targets": {
+      "typecheck": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "tsc --noEmit",
+          "cwd": "packages/game-fx"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "bun run scripts/check-purity.ts",
+          "cwd": "packages/game-fx"
+        }
+      },
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "bun test",
+          "cwd": "packages/game-fx"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.8.0"
+  }
+}

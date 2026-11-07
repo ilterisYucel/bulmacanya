@@ -1,12 +1,24 @@
-import { IonTitle } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardTitle, IonTitle } from "@ionic/react";
 import { t } from "../../../shared/lib";
-import { AppButton } from "../../../shared/ui";
 
-export function HomePage() {
+export function HomePage({
+  onPlayShapetris,
+  onPlayGame7,
+}: {
+  onPlayShapetris: () => void;
+  onPlayGame7: () => void;
+}) {
   return (
     <div className="home-page">
       <IonTitle>{t("home.title")}</IonTitle>
-      <AppButton>{t("home.start")}</AppButton>
+      <IonCard onClick={onPlayShapetris} style={{ cursor: "pointer" }}>
+        <IonCardTitle style={{ padding: "8px 12px" }}>🧩 TetroVizyon</IonCardTitle>
+        <IonCardContent>Şekil tamamlama · Zeka &amp; dikkat</IonCardContent>
+      </IonCard>
+      <IonCard onClick={onPlayGame7} style={{ cursor: "pointer" }}>
+        <IonCardTitle style={{ padding: "8px 12px" }}>🎈 HarfGüder</IonCardTitle>
+        <IonCardContent>Kelime balonları · Zeka &amp; hafıza</IonCardContent>
+      </IonCard>
     </div>
   );
 }
