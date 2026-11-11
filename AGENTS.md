@@ -10,13 +10,22 @@ This instruction set is split by layer — read the file(s) matching the work yo
 
 ## Geliştirme İş Akışı (mandatory order)
 
-1. **SPEC** — `docs/<MODUL>-SPEC.md`: scope, components, contracts, FR-x requirements, GWT acceptance scenarios, AK acceptance criteria, T task list. Canonical format: [`docs/SPEC-SABLONU.md`](docs/SPEC-SABLONU.md).
-2. **JSDoc** — interface/type + behavior contract: states, edge cases, error categories, side effects, limits.
-3. **TEST** — `*.test.ts` (**RED**): pins the contract; must fail while no implementation exists.
-4. **IMPL** — minimal implementation (**GREEN**) + refactor: only code that turns tests green; Elegant Object + DI rules.
-5. **KAPANIŞ** — **no separate doc**: update the same SPEC doc with §A DOĞRULAMA (change matrix, test evidence, AK evidence, deviations, visual check) + §B TEST KAPSAMI (scenario matrix + KAPSANMAYAN gaps), with `review_date`.
+Agent tab'ları (`.opencode/opencode.json` + `.opencode/agents/reviewer.md`): **plan** (DeepSeek V4 Pro) · **build** (DeepSeek V4.1 Flash) · **reviewer** (Qwen3.8 Flash, `mode: all`).
 
-> The ponytail plugin (`.opencode`, project-scoped) applies **on top of** this workflow: it may simplify *how* a task is implemented, but it never overrides the SPEC → JSDoc → TEST (RED) → IMPL order, the KAPANIŞ update, or the acceptance gates.
+1. **SPEC** — plan tab: scope, components, contracts, FR-x requirements, GWT acceptance scenarios, AK acceptance criteria, T task list. Canonical format: [`docs/SPEC-SABLONU.md`](docs/SPEC-SABLONU.md). Konuşmada üretilir, dosyaya YAZILMAZ (Plan Modu Kuralı). → **SPEC onay kapısı**.
+2. **SÖZLEŞME + TEST** — build tab: onaylı SPEC `docs/<MODUL>-SPEC.md`'ye yazılır; JSDoc/type + davranış sözleşmesi (state'ler, edge cases, hata kategorileri, yan etkiler, limitler); `*.test.ts` (**RED**) sözleşmeyi sabitler. → **onay kapısı**.
+3. **IMPL** — build tab: minimal implementation (**GREEN**) + refactor; Elegant Object + DI rules. `bun run check` temiz olmalı.
+4. **REVIEW** — build bitince ana agent **DURUR**; developer review tab'ına geçip reviewer'ı **kendisi çalıştırır** (aynı oturum bağlamı). Reviewer **ayrı doküman ÜRETMEZ** — aynı SPEC dokümanına §A DOĞRULAMA (değişiklik matrisi, test kanıtları, AK kanıtları, sapmalar, gözle kontrol) + §B TEST KAPSAMI (senaryo matrisi + KAPSANMAYAN boşluklar) ekler/günceller; `review_date`'i günceller, Status → 🟢 Doğrulanmış.
+
+**Kapılar:**
+
+- **SPEC onay kapısı (MANDATORY):** SPEC onaylanmadan test/implementasyon başlamaz. SPEC'i yazan ajan developer'ı açıkça uyarır ("onay bekliyor" durumuyla); iş ancak developer onayı sonrası sürer.
+- **Revizyon kapısı (MANDATORY):** build (flash) SPEC içerik kararlarını (K-x, FR-x, AK-x, GWT) yeniden yazmaz — yalnızca tüketir. Revize gerekirse iş durur; developer plan tab'ına döner, SPEC orada revize edilir ve onay kapısı yeniden işletilir.
+- **Review otomasyonu:** Reviewer subagent olarak otomatik çağrılmaz — developer Tab ile geçer. `/review` komutu manuel subagent fallback'idir. Reviewer kodu ve SPEC sözleşme içeriğini değiştirmez — sapmaları raporlar, düzeltme kararını developer verir.
+- **Gate:** `bun run check` (contracts + lint + typecheck + test) review öncesi temiz olmalıdır.
+- **Status yaşam döngüsü:** `✏️ Specified` → `✅ Approved` → `🟡 Geliştirmede` → `🟢 Doğrulanmış` (→ `⛔ Defer`).
+
+> The ponytail plugin (`.opencode`, project-scoped) applies **on top of** this workflow: it may simplify *how* a task is implemented, but it never overrides the SPEC → JSDoc → TEST (RED) → IMPL order, the review (§A/§B) update, or the acceptance gates.
 
 Doc naming: SPEC postfix is `-SPEC.md`.
 

@@ -7,6 +7,7 @@ const TR = {
   "home.start": "Başla",
   "home.playShapetris": "TetroVizyon Oyna",
   "home.playGame7": "HarfGüder Oyna",
+  "home.playDuseninDostu": "Düşenin Dostu Oyna",
 } as const;
 
 export type TrKey = keyof typeof TR;

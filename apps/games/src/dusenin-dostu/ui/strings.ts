@@ -1,0 +1,35 @@
+/**
+ * strings — Düşenin Dostu oyun içi Türkçe metinler (UC-9/FR-9.4).
+ * App i18n anahtarları Home/hub tarafında; burada yalnız sahne metinleri.
+ */
+export const STR = {
+  floor: "Kat",
+  score: "Puan",
+  coin: "Coin",
+  ropes: "İp",
+  chain: "Zincir",
+  time: "Süre",
+  hint: "İpucu",
+  slow: "Yavaşlat",
+  restart: "Yeniden",
+  back: "Çık",
+  mute: "Ses",
+  gameOver: "Oyun Bitti",
+  victory: "Bölüm Tamam!",
+  next: "Sonraki",
+  stars: "Yıldız",
+  reasonFall: "Düştün!",
+  reasonBreaker: "Dikenlere çarptın!",
+  reasonRope: "İp bitti!",
+  reasonTime: "Süre bitti!",
+  egg404Title: "404 — Son Kat Bulunamadı",
+  egg404Body: "Efsane doğruymuş. Tırmanmaya devam edebilirsin.",
+  outOfRange: "Menzil dışı",
+  invalidTarget: "Bu kutuya ip atılmaz",
+  noRope: "İp kalmadı",
+  immediateBreak: "İp hemen kopar",
+  skip: "Atla",
+  tutorial1: "Kutuya dokun — ip kancası kendisi gider ve etrafında sallanırsın.",
+  tutorial2: "Boşluğa dokun — ipi bırak, teğet hızla uçarsın. Yeşil işaret iniş noktan.",
+  tutorial3: "Yukarı çık! Her kat yeni ip verir; dikenli kutuya ne ip ne beden değmeli.",
+} as const;

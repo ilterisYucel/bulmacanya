@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agents": {
+    "plan": {
+      "model": "opencode-go/deepseek-v4-pro",
+      "description": "Planlama ve analiz modu - güçlü model ile SPEC tasarımı yapar. SPEC içeriği konuşmada üretilir, dosyaya yazılmaz (Plan Modu Kuralı)."
+    },
+    "build": {
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "description": "Uygulama modu - onaylı SPEC'i tüketip SPEC dosyası, JSDoc, test ve implementasyonu yazar"
+    },
+    "general": {
+      "model": "opencode-go/deepseek-v4.1-flash"
+    },
+    "explore": {
+      "model": "opencode-go/deepseek-v4.1-flash"
+    }
+  },
+  "commands": {
+    "review": {
+      "description": "SPEC review'u çalıştır - aynı SPEC dokümanının §A/§B bölümlerini günceller (ayrı KAPANIŞ dokümanı YOK)",
+      "template": "@reviewer Şu değişiklikleri incele ve SPEC'in §A/§B bölümlerini güncelle. Diff: {{input}} — SPEC'i kendin bul (glob: docs/*-SPEC.md)."
+    }
+  }
+}

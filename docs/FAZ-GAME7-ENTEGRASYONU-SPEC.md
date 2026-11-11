@@ -8,7 +8,7 @@ review_date: 2026-11-07
 # FAZ-GAME7-ENTEGRASYONU — SPEC
 
 > **İş akışı aşaması:** 1/5 — SPEC (AGENTS.md "Geliştirme İş Akışı").
-> **Durum:** TAMAMLANDI (P-1..P-7) — ONAY BEKLİYOR. Doküman kullanıcıyla bölüm bölüm büyütüldü; tüm parçalar işlendi.
+> **Durum:** ✅ IMPL TAMAM — KAPANIŞ yazıldı (§A/§B, 2026-11-07). Gözle kontrol turları kullanıcıda sürüyor.
 > **İlişkili:** [SPEC-SABLONU](docs/SPEC-SABLONU.md), [README §2/§4.3/§7.3.2](README.md), [AGENTS-GAMES](AGENTS-GAMES.md), emsal: [FAZ-SHAPETRIS-ENTEGRASYONU-SPEC](docs/FAZ-SHAPETRIS-ENTEGRASYONU-SPEC.md), tool paketi: [FAZ-GAME-FX-SPEC](docs/FAZ-GAME-FX-SPEC.md)
 > **Referans (eski oyun):** `/home/ilteris/Downloads/game7-master/` (`static/main.js`, `static/main.html`, `cordova-config/config.xml`)
 
@@ -25,7 +25,7 @@ review_date: 2026-11-07
 | P-5 | UC-5 — Juice / oyun hissi (B paketi) | ✅ Bu parça (2026-11-07) |
 | P-6 | UC-6 — HUD ve menüler (C paketi) + grafik varlık planı | ✅ Bu parça (2026-11-07) |
 | P-7 | §4 Mimari + UC-7 — bulmacanya entegrasyonu (IGameModule, paket, i18n, varlıklar) | ✅ Bu parça (2026-11-07) |
-| — | Onay → JSDoc → TEST (RED) → IMPL → KAPANIŞ (§A/§B) | ⬜ |
+| — | Onay → JSDoc → TEST (RED) → IMPL → KAPANIŞ (§A/§B) | ✅ (2026-11-07) |
 
 ---
 

@@ -11,10 +11,13 @@
     "check:contracts": "bun test scripts/check-contracts.test.ts && bun run scripts/check-contracts.ts",
     "lint": "bunx nx run-many -t lint",
     "typecheck": "bunx nx run-many -t typecheck",
-    "test": "bunx nx run-many -t test"
+    "test": "bunx nx run-many -t test",
+    "sprites": "bun tools/generate-sprite.mjs"
   },
   "devDependencies": {
+    "@fal-ai/client": "^1.6.0",
     "nx": "^24.0.0",
+    "sharp": "^0.34.0",
     "typescript": "^5.8.0"
   }
 }

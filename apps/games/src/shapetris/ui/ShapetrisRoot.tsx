@@ -230,11 +230,43 @@ export function ShapetrisRoot({
               onPointerUp={onStageUp}
               onPointerUpOutside={onStageUp}
             >
+              {/* Arka plan — oranı koruyarak kapla (cover) */}
+              <pixiSprite
+                texture={frames.background}
+                x={area.width / 2}
+                y={area.height / 2}
+                anchor={{ x: 0.5, y: 0.5 }}
+                width={
+                  frames.background.width *
+                  Math.max(
+                    area.width / frames.background.width,
+                    area.height / frames.background.height,
+                  )
+                }
+                height={
+                  frames.background.height *
+                  Math.max(
+                    area.width / frames.background.width,
+                    area.height / frames.background.height,
+                  )
+                }
+              />
+              {/* Tahta çerçevesi kaldırıldı (2026-11-11 kullanıcı kararı) */}
               <BoardLayer
                 board={snapshot.board}
                 boardVersion={snapshot.boardVersion}
                 layout={layout}
                 frames={frames}
+              />
+              {/* Kaide — tepsi ve sonraki parçaların arkasında (koyu cam, hafif saydam) */}
+              <pixiSprite
+                texture={frames.pedestal}
+                x={layout.indent + 6 * layout.step}
+                y={area.height - 0.9 * layout.step}
+                anchor={{ x: 0.5, y: 0.5 }}
+                width={10 * layout.step}
+                height={3.1 * layout.step}
+                alpha={0.9}
               />
               <TrayLayer
                 board={snapshot.board}
@@ -573,7 +605,7 @@ const TrayLayer = memo(function TrayLayer({
         width={step}
         height={step}
         anchor={PIECE_ORIGINS[nid]}
-        alpha={0.5}
+        alpha={0.8}
       />,
     );
   }

@@ -7,7 +7,9 @@
   "exports": {
     "./shapetris": "./src/shapetris/index.ts",
     "./game7": "./src/game7/index.ts",
-    "./game7/progression": "./src/game7/model/progression.ts"
+    "./game7/progression": "./src/game7/model/progression.ts",
+    "./dusenin-dostu": "./src/dusenin-dostu/index.ts",
+    "./dusenin-dostu/campaign": "./src/dusenin-dostu/model/campaign.ts"
   },
   "scripts": {
     "test": "bun test",

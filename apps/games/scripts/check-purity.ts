@@ -5,7 +5,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const GAMES = ["shapetris", "game7"];
+const GAMES = ["shapetris", "game7", "dusenin-dostu"];
 const ROOTS = GAMES.map((g) => join(process.cwd(), "src", g, "model"));
 const ALLOWED_PREFIXES = ["@bulmacanya/shared", "bun:test"];
 
